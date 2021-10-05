@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "frappe-charts": "^1.6.2",
+    "helmet": "^4.6.0",
+    "mongoose": "^6.0.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12",
+    "passport": "^0.4.1",
+    "passport-kakao": "^1.0.1",
+    "path": "^0.12.7",
+    "python-shell": "^3.0.0",
+    "request": "^2.88.2"
+  },
+  "name": "pnu-hackerton",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

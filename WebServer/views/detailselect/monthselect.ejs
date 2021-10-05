@@ -1,0 +1,37 @@
+<%- include ('../layouts/mybaseheader') -%>
+<link rel="stylesheet" href="/css/monthlyselect.css">
+</head>
+<body>
+    <div id="navbar">
+        <div style="font-size:30px">월별 선택</div>
+        <ul>
+            <li><a href="/detail/dayselect">일별</a></li>
+            <li><a href="/detail/week">한주</a></li>
+            <li><a href="/detail/monthselect">월별</a></li>
+        </ul>
+    </div>
+    <div id="month-calendar">
+        <div style="display:flex; width:100%; justify-content: space-around; font-size:28px">
+            <div id="before"><</div>
+            <div id="Y"></div>
+            <div id="next">></div>
+        </div>
+        <div style="font-size:25px; margin-top:5vh">
+            <div id="row1" style="display:flex; width:100%; justify-content: space-around;">
+            </div>
+            <div id="row2" style="display:flex; width:100%; justify-content: space-around;">
+            </div>
+            <div id="row3" style="display:flex; width:100%; justify-content: space-around;">
+            </div>
+        </div>
+    </div>
+    <div id="toggle-box">
+        <div id="menu">
+            <div><a href="/main/lobby"><img id="home" src="/images/home.png"></a></div>
+            <div><a href="/main/post"><img id="writepage" src="/images/pencil2.png"></a></div>
+        </div>
+        <div id="toggle"><img id="plusimg" src="/images/plus.png"></div>
+      </div>
+</body>
+<script src="/js/monthlyselect.js"></script>
+</html>

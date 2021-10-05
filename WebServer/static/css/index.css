@@ -1,0 +1,58 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body{
+    max-width: 512px;
+    margin: 0 auto;
+    position: relative;
+}
+/* .navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 10vh;
+    background-color: hotpink;
+    padding: 10px;
+    align-items: center;
+} */
+/* #login{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+} */
+
+/* .LoginModal{
+    position:absolute;
+    margin:0 auto;
+    flex-direction: column;
+    justify-content: right;
+    box-sizing: border-box;
+    background-color: yellow;
+    width:100%;
+    height: 100vh;
+    top: 0;
+    display: none;
+} */
+
+/* .LoginModalN{
+    background-color: hotpink;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 10vh;
+    padding: 10px;
+    align-items: center;
+}
+.LoginModalB{
+    flex:1 auto;
+    display: flex;
+    flex-direction: column;
+}
+.mdclose{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+} */
+

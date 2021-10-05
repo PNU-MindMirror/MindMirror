@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+body{
+    height:100vh;
+    /* background:linear-gradient(70deg,rgb(143, 238, 123),rgb(248,235,147)); */
+    background-image : url('/images/paper.png');
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 718px;
+    text-align: center;
+}
+#title{
+    animation: fadein 5s;
+    color:white;
+}
+
+#subtitle{
+        text-align: center;
+        height:30px;
+        display: block;
+        animation: fadein 5s;
+        /* animation: typewriter 2s steps(20) 1s 1 normal both;
+        overflow: hidden; */
+        /* color:#fffdd1; */
+}
+#subtitle2{
+    height:30px;
+    display: block;
+    animation: fadein 5s;
+    /* animation: typewriter 2s steps(30) 3s 1 normal both; */
+    /* overflow: hidden; */
+    /* color:#fffdd1; */
+}
+@keyframes typewriter{
+    from{width: 0;}
+    to{width: 100%;}
+  }
+
+@keyframes fadein{
+    from{ 
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

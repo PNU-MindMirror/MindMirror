@@ -1,0 +1,44 @@
+<%- include ('../layouts/mybaseheader') -%>
+<link rel="stylesheet" href="/css/dailyselect.css">
+</head>
+<body>
+    <div id="navbar">
+        <div style="font-size:30px">일별 선택</div>
+        <ul>
+            <li><a href="/detail/dayselect">일별</a></li>
+            <li><a href="/detail/week">한주</a></li>
+            <li><a href="/detail/monthselect">월별</a></li>
+        </ul>
+    </div>
+    <table id="calendar">
+        <!-- 뒤에서 변수명을 주기 위해 아이디 생성-->
+          <thead>
+              <tr>
+              <td id="before"> <button><</button></td>
+              <td style='font-size:25px;' colspan="5" id="YM"></td>
+              <td id="next"> <button>></button> </td>
+              </tr>
+          </thead>
+          <tbody>
+			<tr>
+			<td style="color: red;">일</td>
+			<td>월</td>
+			<td>화</td>
+			<td>수</td>
+			<td>목</td>
+			<td>금</td>
+			<td style="color:blue">토</td>
+			</tr>
+		</tbody>
+
+      </table>
+      <div id="toggle-box">
+        <div id="menu">
+            <div><a href="/main/lobby"><img id="home" src="/images/home.png"></a></div>
+            <div><a href="/main/post"><img id="writepage" src="/images/pencil2.png"></a></div>
+        </div>
+        <div id="toggle"><img id="plusimg" src="/images/plus.png"></div>
+      </div>
+</div>
+      <script src="/js/calendar.js"></script>
+</body>

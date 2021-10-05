@@ -1,0 +1,27 @@
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/lobby.css">
+<style>
+    </style>
+</head>
+<body>
+    <div id="boxcover">
+        <div style="top:10px; font-size:30px; position:fixed;">2021년</div>
+    <% for(let i of allPost){ %>
+    <div style="margin-top: 10px; width:90vw; display: flex; flex-direction: column; align-items: center;">
+    <div class="date"><%= i.date.month %>월 <%=i.date.day %>일</div>
+    <div class="box">
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<%= i.body %></div>
+    </div>
+    </div>
+    <% } %>
+        <div id="toggle-box">
+            <div id="menu">
+                <div><a href="/detail/dayselect"><img id="mypage" src="/images/mypage.png"></a></div>
+                <div><a href="/main/post"><img id="writepage" src="/images/pencil2.png"></a></div>
+            </div>
+            <div id="toggle"><img id="plusimg" src="/images/plus.png"></div>
+          </div>
+    </div>
+    <script src="/js/lobby.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<%- include('layouts/header') -%>
+<link rel="stylesheet" href="/css/post.css">
+</head>
+<body>
+    <form action="post" method="POST" style="text-align: center; width:100%">
+        <p style="font-family: Hi Melody,cursive; font-size: 25px;"><%= date %></p>
+        <textarea id="note" name='post'></textarea>
+        <button id="sb_btn" type="submit">SUBMIT</button>
+    </form>
+</body>
+<script src="/js/post.js"></script>
+</html>

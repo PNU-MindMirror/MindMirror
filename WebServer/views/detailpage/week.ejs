@@ -1,0 +1,367 @@
+<%- include('../layouts/mybaseheader') -%>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart','line']});
+
+//그래프 실행함수
+google.charts.setOnLoadCallback(PieChart);
+google.charts.setOnLoadCallback(LineChart);
+google.charts.setOnLoadCallback(SituationPieChart);
+function SituationPieChart() {
+    let shappy = `<%= returnhappy %>`;
+    shappy = shappy.split(',');
+    shappy = shappy.map(x=>parseInt(x));
+    let ssad = `<%= returnsad %>`;
+    ssad = ssad.split(',');
+    ssad = ssad.map(x=>parseInt(x));
+    let sanger = `<%= returnanger %>`;
+    sanger = sanger.split(',');
+    sanger = sanger.map(x=>parseInt(x));
+    let sunrest = `<%= returnunrest %>`;
+    sunrest = sunrest.split(',');
+    sunrest = sunrest.map(x=>parseInt(x));
+    let sembarrass = `<%= returnembarrass %>`;
+    sembarrass = sembarrass.split(',');
+    sembarrass = sembarrass.map(x=>parseInt(x));
+    let sscar = `<%= returnscar %>`;
+    sscar = sscar.split(',');
+    sscar = sscar.map(x=>parseInt(x));
+    let sneutral = `<%= returnneutral %>`;
+    sneutral = sneutral.split(',');
+    sneutral = sneutral.map(x=>parseInt(x));
+  // Create the data table.
+  let srowdata = []
+  if('<%=feeling%>' == "happy"){
+      srowdata.push(['가족관계',shappy[0]],
+      ['학업 및 진로',shappy[1]],
+      ['학교폭력/따돌림',shappy[2]],
+      ['대인관계',shappy[3]],
+      ['직장,업무 스트레스',shappy[4]],
+      ['연애,결혼,출산',shappy[5]],
+      ['진로,취업,직장',shappy[6]],
+      ['재정,은퇴,노후준비',shappy[7]],
+      ['건강,죽음',shappy[8]])
+  }else  if('<%=feeling%>' == "sad"){
+      srowdata.push(['가족관계',ssad[0]],
+      ['학업 및 진로',ssad[1]],
+      ['학교폭력/따돌림',ssad[2]],
+      ['대인관계',ssad[3]],
+      ['직장,업무 스트레스',ssad[4]],
+      ['연애,결혼,출산',ssad[5]],
+      ['진로,취업,직장',ssad[6]],
+      ['재정,은퇴,노후준비',ssad[7]],
+      ['건강,죽음',ssad[8]])
+  }else  if('<%=feeling%>' == "anger"){
+      srowdata.push(['가족관계',sanger[0]],
+      ['학업 및 진로',sanger[1]],
+      ['학교폭력/따돌림',sanger[2]],
+      ['대인관계',sanger[3]],
+      ['직장,업무 스트레스',sanger[4]],
+      ['연애,결혼,출산',sanger[5]],
+      ['진로,취업,직장',sanger[6]],
+      ['재정,은퇴,노후준비',sanger[7]],
+      ['건강,죽음',sanger[8]])
+  }else  if('<%=feeling%>' == "unrest"){
+      srowdata.push(['가족관계',sunrest[0]],
+      ['학업 및 진로',sunrest[1]],
+      ['학교폭력/따돌림',sunrest[2]],
+      ['대인관계',sunrest[3]],
+      ['직장,업무 스트레스',sunrest[4]],
+      ['연애,결혼,출산',sunrest[5]],
+      ['진로,취업,직장',sunrest[6]],
+      ['재정,은퇴,노후준비',sunrest[7]],
+      ['건강,죽음',sunrest[8]])
+  }else  if('<%=feeling%>' == "embarrass"){
+      srowdata.push(['가족관계',sembarrass[0]],
+      ['학업 및 진로',sembarrass[1]],
+      ['학교폭력/따돌림',sembarrass[2]],
+      ['대인관계',sembarrass[3]],
+      ['직장,업무 스트레스',sembarrass[4]],
+      ['연애,결혼,출산',sembarrass[5]],
+      ['진로,취업,직장',sembarrass[6]],
+      ['재정,은퇴,노후준비',sembarrass[7]],
+      ['건강,죽음',sembarrass[8]])
+  }else  if('<%=feeling%>' == "scar"){
+      srowdata.push(['가족관계',sscar[0]],
+      ['학업 및 진로',sscar[1]],
+      ['학교폭력/따돌림',sscar[2]],
+      ['대인관계',sscar[3]],
+      ['직장,업무 스트레스',sscar[4]],
+      ['연애,결혼,출산',sscar[5]],
+      ['진로,취업,직장',sscar[6]],
+      ['재정,은퇴,노후준비',sscar[7]],
+      ['건강,죽음',sscar[8]])
+  }else if('<%=feeling %>' == "neutral"){
+      srowdata.push(['가족관계',sneutral[0]],
+      ['학업 및 진로',sneutral[1]],
+      ['학교폭력/따돌림',sneutral[2]],
+      ['대인관계',sneutral[3]],
+      ['직장,업무 스트레스',sneutral[4]],
+      ['연애,결혼,출산',sneutral[5]],
+      ['진로,취업,직장',sneutral[6]],
+      ['재정,은퇴,노후준비',sneutral[7]],
+      ['건강,죽음',sneutral[8]])
+  }
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Situation');
+  data.addColumn('number', 'Slices');
+  data.addRows(srowdata);
+
+  // Set chart options
+  var options = {'titlePosition':'none',
+                'backgroundColor':'transparent',
+                'fontName': 'Hi Melody',
+                'fontSize':'15',
+                'chartArea':{'width':'100%','height':'80%',left:'15%'},
+                'chart_div':{'margin':'0 auto'},
+                };
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.PieChart(document.getElementById('situationpiechart'));
+  chart.draw(data, options);
+}
+function PieChart() {
+    const 기쁨 = parseFloat("<%= resultarr.기쁨 %>");
+    const 분노 = parseFloat("<%= resultarr.분노 %>");
+    const 슬픔 = parseFloat("<%= resultarr.슬픔 %>");
+    const 불안 = parseFloat("<%= resultarr.불안 %>");
+    const 상처 = parseFloat("<%= resultarr.상처 %>");
+    const 당황 = parseFloat("<%= resultarr.당황 %>");
+    const 중립 = parseFloat("<%= resultarr.중립 %>");
+    console.log(Math.max(기쁨,분노,슬픔,불안,상처,당황))
+  // Create the data table.
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Topping');
+  data.addColumn('number', 'Slices');
+  data.addRows([
+    ['분노', 분노],
+    ['기쁨', 기쁨],
+    ['슬픔', 슬픔],
+    ['불안', 불안],
+    ['상처', 상처],
+    ['당황', 당황],
+    ['중립', 중립]
+  ]);
+
+  // Set chart options
+  var options = {'titlePosition':'none',
+                'backgroundColor':'transparent',
+                'fontName': 'Hi Melody',
+                'fontSize':'15',
+                'chartArea':{'width':'100%','height':'80%',left:'15%'},
+                'chart_div':{'margin':'0 auto'},
+                };
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+function LineChart(){
+    //ejs 문자열 =>리스트형으로 변환
+    let sad = `<%= sad %>`;
+    sad = sad.split(',');
+    sad = sad.map(x=>parseInt(x));
+    let happy = `<%= happy %>`;
+    happy = happy.split(',');
+    happy = happy.map(x=>parseInt(x));
+    let anger = `<%= anger %>`;
+    anger = anger.split(',');
+    anger = anger.map(x=>parseInt(x));
+    let embarrass = `<%= embarrass %>`;
+    embarrass = embarrass.split(',');
+    embarrass = embarrass.map(x=>parseInt(x));
+    let scar = `<%= scar %>`;
+    scar = scar.split(',');
+    scar = scar.map(x=>parseInt(x));
+    let unrest = `<%= unrest %>`;
+    unrest = unrest.split(',');
+    unrest = unrest.map(x=>parseInt(x));
+    let neutral = `<%= neutral %>`;
+    neutral = neutral.split(',');
+    neutral = neutral.map(x=>parseInt(x));
+
+    let rowdata = [];
+    let color = 'red';
+    for(var i=0; i<sad.length; i++){
+        rowdata.push([i+1,happy[i],sad[i],anger[i],unrest[i],embarrass[i],scar[i],neutral[i]])
+    }
+    var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'happy');
+      data.addColumn('number', 'sad');
+      data.addColumn('number', 'anger');
+      data.addColumn('number', 'unrest');
+      data.addColumn('number', 'embarrass');
+      data.addColumn('number', 'scar');
+      data.addColumn('number','neutral');
+      data.addRows(rowdata);
+    
+      var options = {
+        vAxis: {
+          minValue:'0',
+          maxValue: '100',
+        },
+        fontName:'Hi Melody',
+        fontSize: '15',
+        backgroundColor:'transparent',
+        chartArea:{width:'85%',height:'100%',left:'10%',backgroundColor:'inheritate'},
+        colors:['#ffa50a','#617bef','#ef6161','#b417d3','#61ef68','#991a2d','grey'],
+        series:{
+            0:{
+                lineWidth:1,
+            },
+            1:{
+                lineWidth:1,
+            },
+            2:{
+                lineWidth:1,
+            },
+            3:{
+                lineWidth:1,
+            },
+            4:{
+                lineWidth:1,
+            },
+            5:{
+                lineWidth:1,
+            },
+            6:{
+                lineWidth:1
+            }
+        }
+      };
+      if('<%=feeling%>' == "happy"){
+          options.series[0].lineWidth = 5;
+          options.series[1].lineWidth = 1;
+          options.series[2].lineWidth = 1;
+          options.series[3].lineWidth = 1;
+          options.series[4].lineWidth = 1;
+          options.series[5].lineWidth = 1;
+          options.series[6].lineWidth = 1;
+      }else if('<%=feeling%>' == "sad"){
+          options.series[0].lineWidth = 1;
+          options.series[1].lineWidth = 5;
+          options.series[2].lineWidth = 1;
+          options.series[3].lineWidth = 1;
+          options.series[4].lineWidth = 1;
+          options.series[5].lineWidth = 1;
+          options.series[6].lineWidth = 1;
+      }else if('<%=feeling%>' == "anger"){
+          options.series[0].lineWidth = 1;
+          options.series[1].lineWidth = 1;
+          options.series[2].lineWidth = 5;
+          options.series[3].lineWidth = 1;
+          options.series[4].lineWidth = 1;
+          options.series[5].lineWidth = 1;
+          options.series[6].lineWidth = 1;
+      }else if('<%=feeling%>' == "unrest"){
+          options.series[0].lineWidth = 1;
+          options.series[1].lineWidth = 1;
+          options.series[2].lineWidth = 1;
+          options.series[3].lineWidth = 5;
+          options.series[4].lineWidth = 1;
+          options.series[5].lineWidth = 1;
+          options.series[6].lineWidth = 1;
+      }else if('<%=feeling%>' == "embarrass"){
+          options.series[0].lineWidth = 1;
+          options.series[1].lineWidth = 1;
+          options.series[2].lineWidth = 1;
+          options.series[3].lineWidth = 1;
+          options.series[4].lineWidth = 5;
+          options.series[5].lineWidth = 1;
+          options.series[6].lineWidth = 1;
+      }else if('<%=feeling%>' == "scar"){
+          options.series[0].lineWidth = 1;
+          options.series[1].lineWidth = 1;
+          options.series[2].lineWidth = 1;
+          options.series[3].lineWidth = 1;
+          options.series[4].lineWidth = 1;
+          options.series[5].lineWidth = 5;
+          options.series[6].lineWidth = 1;
+      }else if('<%=feeling%>' == "neutral"){
+          options.series[0].lineWidth = 1;
+          options.series[1].lineWidth = 1;
+          options.series[2].lineWidth = 1;
+          options.series[3].lineWidth = 1;
+          options.series[4].lineWidth = 1;
+          options.series[5].lineWidth = 1;
+          options.series[6].lineWidth = 5;
+      }
+
+
+      var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+
+      chart.draw(data, options);
+}
+</script>
+<style>
+    a{
+        text-decoration: none;;
+    }
+</style>
+</head>
+<%- include('../layouts/mybasebody') -%>
+<div id="emotion-analysis">
+    <div style="font-size:30px; margin-top:10px;"><span style="padding-bottom:5px; border-bottom: 5px double black;">감정 분포<span</div>
+    <div class="content">
+        <div style="margin-top: 20px;">
+            <div style="font-size:30px;">대표감정</div>
+            <div style="font-size:30px"><%= max %></div>
+        </div>
+        <div id="piechart" style="width:90vw; height:30vh; margin:0 auto;"></div>
+    </div>
+    <div style="font-size:30px; margin-bottom:10px;"><div style=" padding-top:10px;margin-left: 5%; width:90%; border-top:solid 2px grey">감정선 추세</div></div>
+    <div style="display:flex; justify-content: space-around; font-size: 20px;">
+        <div id="기쁨"></div>
+        <div id="슬픔"></div>
+        <div id="분노"></div>
+        <div id="불안"></div>
+        <div id="당황"></div>
+        <div id="상처"></div>
+        <div id="중립"></div>
+    </div>
+    <div id="linechart" style="margin-top:20px; height: 60vw;"></div>
+</div>
+<div style="font-size:30px; margin-bottom:10px;">
+    <div style=" padding-top:10px;margin-left: 5%; width:90%; text-align: center;">감정별 상황</div>
+    
+        <% if(feeling == "happy"){ %>
+            <div style=" color:#ffa50a; font-size:20px; margin-top:10px; width:90%; text-align: center;">기쁨</div>
+            <% }else if(feeling == "sad"){  %>
+                <div style=" color:#617bef; font-size:20px; margin-top:10px; width:90%; text-align: center;">슬픔</div>
+                <% }else if(feeling == "anger"){  %>
+                    <div style=" color:#ef6161; font-size:20px; margin-top:10px; width:90%; text-align: center;">분노</div>
+                    <% }else if(feeling == "unrest"){ %>
+                        <div style=" color:#b417d3; font-size:20px; margin-top:10px; width:90%; text-align: center;">불안</div>
+                        <% }else if(feeling == "embarrass"){ %>
+                            <div style=" color:#61ef68; font-size:20px; margin-top:10px; width:90%; text-align: center;">당황</div>
+                            <% }else if(feeling == "scar"){  %>
+                                <div style=" color:#991a2d; font-size:20px; margin-top:10px; width:90%; text-align: center;">상처</div>
+                                <% }else if(feeling == "neutral"){ %>
+                                    <div style=" color:grey; font-size:20px; margin-top:10px; width:90%; text-align: center;">중립</div>
+                                    <% } %>
+</div>
+<div id="situationpiechart" style="width:90vw; height:30vh; margin:0 auto;"></div>
+
+</body>
+<script>
+    const 기쁨 = document.querySelector('#기쁨')
+    const 슬픔 = document.querySelector('#슬픔')
+    const 분노 = document.querySelector('#분노')
+    const 불안 = document.querySelector('#불안')
+    const 당황 = document.querySelector('#당황')
+    const 상처 = document.querySelector('#상처')
+    const 중립 = document.querySelector("#중립");
+    function atag(){
+        기쁨.innerHTML = `<a style="color:#ffa50a" href="/detail/week?&feeling=happy">기쁨</a>`
+        슬픔.innerHTML = `<a style="color:#617bef "href="/detail/week?&feeling=sad">슬픔</a>`
+        분노.innerHTML = `<a style="color:#ef6161" href="/detail/week?&feeling=anger">분노</a>`
+        불안.innerHTML = `<a style="color:#b417d3" href="/detail/week?&feeling=unrest">불안</a>`
+        당황.innerHTML = `<a style="color:#61ef68" href="/detail/week?&feeling=embarrass">당황</a>`
+        상처.innerHTML = `<a style="color:#991a2d" href="/detail/week?&feeling=scar">상처</a>`
+        중립.innerHTML = `<a style="color:grey" href="/detail/week?&feeling=neutral">중립</a>`
+    }
+    atag()
+</script>
+</html>
